@@ -1,5 +1,5 @@
-% OParl Schnittstellen-Spezifikation (Entwurf)
-% OParl Team - http://oparl.de/
+% OParl Schnittstellen-Spezifikation (Entwurf 16.6.2014)
+% OParl Team - <http://oparl.org/>
 
 
 Lizenz: Creative Commons CC-BY-SA

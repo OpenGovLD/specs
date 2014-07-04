@@ -1,10 +1,10 @@
 Nomenklatur der Spezifikation und Satzkonventionen
 --------------------------------------------------
 
-### MÜSSEN, SOLLEN und KÖNNEN bzw. ZWINGEND, EMPFOHLEN und OPTIONAL
+### Zwingende, empfohlene und optionale Anforderungen  {#muss_soll_darf}
 
-Dieses Spezifikationsdokument nutzt die Modalverben müssen, können und sollen
-in einer Art und Weise, die bestimmte Anforderungen möglichst unmissverständlich
+Dieses Spezifikationsdokument nutzt die Modalverben _müssen_, _können_ und _sollen_
+in einer Art und Weise, die bestimmte Anforderungen unmissverständlich
 in drei verschiedene Abstufung einteilen lässt. Um ihre normative Bedeutung
 zu unterstreichen, werden diese Wörter grundsätzlich in Großbuchstaben gesetzt.
 
@@ -59,5 +59,26 @@ DÜRFEN/DARF bzw. OPTIONAL:
     Die Entsprechung in RFC2119 lautet "MAY" oder "OPTIONAL".
 
 
-### Besondere Hervorhebungen und Satzkonventionen
+### Geschlechterspezifische Begrifflichkeiten
+
+Um bei Begriffen wie Nutzer, Anwender, Betreiber etc. die sonst übliche Dominanz
+der männlichen Variante zu vermeiden, werden in diesem Dokument
+männliche oder weibliche Varianten gemischt. Es wird also beispielsweise mal
+von einer Nutzerin gesprochen und mal von einem Nutzer. Gemeint sind
+in allen Fällen Personen jeglichen Geschlechts.
+
+### Codebeispiele
+
+Die in diesem Dokument aufgeführten Codebeispiele dienen der Veranschaulichung
+der beschriebenen Prinzipien. Es handelt sich in der Regel um frei erfundene
+Daten.
+
+Codebeispiele erheben insbesondere bei JSON-Code nicht den Anspruch auf
+hundertprozentige syntaktische Korrektheit. Insbesondere können in Codebeispielen
+Auslassungen vorkommen, die mit `...` gekennzeichnet werden. Darüber hinaus
+werden zugunsten der einfacheren Lesbarkeit Umlaute verwendet, obwohl OParl
+grundsätzlichlich die Verwendung von Unicode-Zeichneketten vorsieht.
+
+In JSON-LD-Beispielen wird der URL-Präfix `beispielris:` genutzt, um die
+Beispiel-URL `https://oparl.example.org/` abzukürzen.
 

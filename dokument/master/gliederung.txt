@@ -33,15 +33,19 @@ OParl Spezifikation 1.0 Gliederung
     Szenario 2: Integration in Web-Portal
     Szenario 3: Meta-Suche
     Szenario 4: Forschungsprojekt Themen- und Sprachanalyse
-6000 Prinzipien und Funktionen der API
+6000 Prinzipien und Funktionen des Vokabulars und der API
     6010 Designprinzipien
         Allgemein
         RESTful
         Selbstbeschreibungsfähigkeit
         Erweiterbarkeit
         Browseability/Verlinkung
+        Linked Data
     6020 Zukunftssicherheit
     6030 HTTP und HTTPS
+    6035 URLs
+        Empfehlungen für langlebige IRIs/URIs/URLs
+        Empfehlungen für eindeutige URLs
     6040 Serialisierung mittels JSON-LD und JSONP
         JSON
         JSON-LD
@@ -49,84 +53,73 @@ OParl Spezifikation 1.0 Gliederung
     6050 Benannte und anonyme Objekte
         Benannte Objekte
         Anonyme Objekte (Blank Nodes)
-        Empfehlungen für langlebige IRIs/URIs/URLs
-        Empfehlungen für eindeutige URLs
     6060 Objektlisten
     6070 Feeds
         Neue Objekte
         Geänderte Objekte
         Entfernte Objekte
+    6075 Daten Dump / bulk download
     6080 Dokumentenabruf
+    6090 Content Negotiation
+    6095 HTTP-Kompression
     6100 Ausnahmebehandlung
     6900 Reservierte URL-Parameter
 8000 Schema
     8010 Überblick
         - Überblick mit Graph-Darstellung
     8020 Attribute mit Verwendung in mehreren Objekttypen
-    8030 OParlSystem (System)
-        Bedeutung
-        Eigenschaften
-        Besonderheiten
-            - Darf nur einmal vorkommen
-        Beispiel(e)
-    8040 OParlBody (Körperschaft)
+    8030 oparl:System (System)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8050 OParlCommittee (Gremium)
+    8040 oparl:Body (Körperschaft)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8060 OParlPerson (Person)
+    8050 oparl:Organization (Gruppierung)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8070 OParlOrganisation (Organisation)
+    8060 oparl:Person (Person)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8080 OParlMeeting (Sitzung)
+    8080 oparl:Meeting (Sitzung)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8090 OParlAgendaitem (Tagesordnungspunkt)
+    8090 oparl:Agendaitem (Tagesordnungspunkt)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8100 OParlPaper (Drucksache)
+    8100 oparl:Paper (Drucksache)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8110 OParlDocument (Dokument)
+    8110 oparl:File (Dokument)
         Bedeutung
         Eigenschaften
         Besonderheiten
         Beispiel(e)
-    8120 OParlConsultation (Beratung)
-        Bedeutung
-            - Bildet die Beratung einer Drucksache im Rahmen einer Sitzung ab
-        Eigenschaften
-        Besonderheiten
-            - Nur als anonymes Objekt (Blank Node) vorgesehen, SOLL aber IRI enthalten
-        Beispiel(e)
-    8130 OParlLocation (Ort)
+    8120 oparl:Consultation (Beratung)
         Bedeutung
         Eigenschaften
         Besonderheiten
-            - Nur als anonymes Objekt (Blank Node) vorgesehen, SOLL aber IRI enthalten
         Beispiel(e)
-    8140 OParlContact (Kontakt)
+    8130 oparl:Location (Ort)
         Bedeutung
         Eigenschaften
         Besonderheiten
-            - Nur als anonymes Objekt (Blank Node) vorgesehen, SOLL aber IRI enthalten
         Beispiel(e)
+    8140 org:Membership / oparl:Membership (Mitgliedschaft)
+    8150 oparl:LegislativeTerm
 9000 Anhang
     9010 Glossar
+    9020 JSON-LD-Ressourcen auf oparl.org

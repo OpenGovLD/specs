@@ -1,130 +1,263 @@
-oparl:Body (Körperschaft)
+oparl:Body (Körperschaft)   {#oparl_body}
 ------------------------
 
-Dieser Objekttyp erlaubt es, eine Körperschaft abzbilden. Eine Körperschaft
-kann beispielsweise eine Gemeinde, ein Landkreis oder ein Zweckverband sein.
+Der Objekttyp `oparl:Body` dient dazu, eine Körperschaft und damit ein
+Parlament zu repräsentieren, zu dem der Server Informationen bereithält.
+Eine Körperschaft kann beispielsweise eine Gemeinde, ein Landkreis oder 
+ein kommunaler Zweckverband sein.
 
-Von einem funktionsfähigen Server wird erwartet, dass er mindestens
+Hätte das System beispielsweise den Zweck, Informationen über das kommunale
+Parlament der Stadt Köln, namentlich den Rat der Stadt Köln, abzubilden,
+dann müsste dieses System dazu ein Objekt vom Typ `oparl:Body` führen, welches
+die Stadt Köln repräsentiert.
+
+### Beispiel ###
+
+Ein Kontext:
+
+~~~~~  {#body_ex_context .json}
+{
+    "@language": "de",
+    "system": {
+        "@id": "oparl:system",
+        "@type": "@id"
+    },
+    "contactEmail": {
+        "@id": "foaf:mbox",
+        "@type": "@id"
+    },
+    "contactName": {
+        "@id": "oparl:contactName",
+        "@type": "xsd:string"
+    }
+    "rgs": { 
+        "@id": "oparl:rgs",
+        "@type": "xsd:string"
+    },
+    "equivalentBody": {
+        "@id": "skos:exactMatch",
+        "@type": "@id" 
+    },
+    "shortName": {
+        "@id": "oparl:shortName",
+        "@type": "xsd:string"
+    },
+    "name": {
+        "@type": "xsd:sting",
+        "@container": "@language" TODO wirklich?
+    },
+    "website": {
+        "@id": "oparl:website",
+        "@type": "@id"
+    },
+    "license": {
+        "@id": "dc:license",
+        "@type": "@id"
+    },
+    "licenseValidSince": {
+        "@id": "oparl:licenseValidSince",
+        "@type": "xsd:date"
+    },  
+    "organization": {
+        "@type": "@id",
+        "@id": "oparl:organization"
+    },
+    "meeting": {
+        "@type": "@id",
+        "@id": "oparl:meeting"
+    },
+    "paper": {
+        "@type": "@id",
+        "@id": "oparl:paper"
+    },
+    "member": {
+        "@type": "@id",
+        "@id": "oparl:member"
+    },
+    "classification": {
+        "@type": "@id",
+        "@id": "oparl:classification"
+    },
+    "created": {
+        "@id": "dc:created",
+        "@type": "xsd:dateTime"
+    },  
+    "modified": {
+        "@id": "dc:modified",
+        "@type": "xsd:dateTime"
+    }   
+}
+~~~~~
+
+
+~~~~~  {#oparlbody_ex1 .json}
+{
+    "@type": "oparl:Body",
+    "@id": "beispielris:body/0",
+    "system": "beispielris:",
+    "contactEmail": "mailto:ris@beispielstadt.de",
+    "contactName": "RIS-Betreuung",
+    "rgs": "053150000000",
+    "equivalentBody": [
+        "http://d-nb.info/gnd/2015732-0",
+        "http://dbpedia.org/resource/Cologne"
+    ],
+    "shortName": "Stadt Köln",
+    "name": {
+        "de": "Stadt Köln, kreisfreie Stadt",
+        "en": "City of Cologne"
+    },
+    "website": "http://www.beispielstadt.de/",
+    "license": "http://creativecommons.org/licenses/by/4.0/",
+    "licenseValidSince": "2014-01-01",
+    "organization": "beispielris:body/0/organisation/",
+    "meeting": "beispielris:body/0/meeting/",
+    "paper": "beispielris:body/0/paper/",
+    "member": "beispielris:body/0/person/",
+    "classification": "beispielris:vocab/landkreis",
+    "created": "2014-01-08T14:28:31.568+0100",
+    "modified": "2014-01-08T14:28:31.568+0100"
+}
+~~~~~
+
+### Anmerkungen ###
+
+Vom OParl-Server wird erwartet, dass er mindestens
 ein Objekt vom Typ `oparl:Body` bereit hält. Teilen sich mehrere Körperschaften
 das selbe technische System, können auf demselben Server auch mehrere
 Objekte vom Typ `oparl:Body` beherbergt werden.
 
-Über die Zuordnung zu einem bestimmten `oparl:Body` Objekt zeigen andere
+Über die Zuordnung zu einem bestimmten `oparl:Body`-Objekt zeigen andere
 Objekte, wie beispielsweise Gremien oder Drucksachen, ihre Zugehörigkeit
-zu einer bestimmten Körperschaft an.
+zu einer bestimmten Körperschaft und damit implizit zu einem bestimmten
+Parlament an.
 
-![Objekttyp oparl:Body](images/datenmodell_koerperschaft.png)
+### Eigenschaften
 
-Es werden mehrere Eigenschaften angeboten, die dazu dienen, die real
-existierende Körperschaft, die von einem `oparl:Body` Objekt repräsentiert
-wird, programmatisch auslesbar zu machen zu können. Insbesondere sind hier
-die Eigenschaften `url`, `rgs` und `gnd_url` zu nennen.
+`system`
+:   System, zu dem dieses Objekt gehört.
+    Typ: `oparl:System`.
+    Kardinalität: 1.
+    ZWINGEND.
 
-### Eigenschaft `system`
+`shortName`
+:   Kurzer Name der Körperschaft.
+    Typ: Datentyp `xsd:string`.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-Diese Eigenschaft ist ZWINGEND.
+`name`
+:   Der offizielle lange Name der Körperschaft.
+    Typ: Datentyp `xsd:string`.
+    Kardinalität: 1.
+    ZWINGEND.
 
-Mit dieser Eigenschaft wird das Objekt dem übergeordneten `oparl:System` Objekt zugeordnet. Wert MUSS der IRI des `oparl:System` Objekts sein.
+`website`
+:   Allgemeine Website der Körperschaft.
+    Typ: URL.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-### Eigenschaft `name`
+`license`
+:   Lizenz, die für die Daten, die über diese API abgerufen werden
+    können, gilt, sofern nicht am einzelnen Objekt anders angegeben.
+    Siehe dazu auch die übergreifende Beschreibung zur Eigenschaft
+    [`license`](#eigenschaft_license).
+    Typ: URL.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-Diese Eigenschaft ist ZWINGEND. Sie transportiert den gebräuchlichen Namen der Körperschaft.
+`licenseValidSince`
+:   Zeitpunkt, seit dem die unter `license` angegebene Lizenz gilt.
+    Vorsicht bei Änderungen der Lizenz die zu restriktiveren Bedingungen führen.
+    Typ: `xsd:Date`.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-### Eigenschaft `name_long`
+`rgs`
+:   Regionalschlüssel der Körperschaft als zwölfstellige Zeichenkette^[Regionalschlüssel können im [Gemeindeverzeichnis (GV-ISys) des Statistischen Bundesamtes](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html) eingesehen werden].
+    Typ: String.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-Diese Eigenschaft ist OPTIONAL und kann bei Bedarf dazu verwendet werden, eine längere Form
-des Namens der Körperschaft wieder zu geben, sofern dieser für die Eigenschaft `name` zu lang
-ist.
+`equivalentBody`
+:   Dient der Angabe beliebig vieler zusätzlicher URLs, die die selbe Körperschaft
+    repräsentieren. Hier können beispielsweise,
+    sofern vorhanden, der entsprechende Eintrag der Gemeinsamen Normdatei der Deutschen Nationalbibliothek^[Gemeinsame Normdatei <http://www.dnb.de/gnd>],
+    der DBPedia^[DBPedia <http://www.dbpedia.org/>] oder der Wikipedia^[Wikipedia <http://de.wikipedia.org/>] angegeben werden.
+    Typ: URL.
+    Kardinalität: 0 bis *.
+    EMPFOHLEN.
 
-### Eigenschaft `url`
+`contactEmail`
+:   Dient der Angabe einer Kontakt-E-Mail-Adresse mit "mailto:"-Schema.
+    Die Adresse soll die Kontaktaufnahme zu einer für die Körperschaft
+    und idealerweise das parlamentarische Informationssystem zuständigen Stelle
+    ermöglichen.
+    Typ: E-Mail-Adresse inklusive "mailto:".
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-Diese Eigenschaft ist EMPFOHLEN.
+`contactName`
+:   Name oder Bezeichnung der mit `contactEmail` erreichbaren Stelle.
+    Typ: String.
+    Kardinalität: 0 bis 1.
+    OPTIONAL.
 
-Mit dieser Eigenschaft SOLL die URL der offiziellen Website der Körperschaft
-ausgegeben werden.
+`paper`
+:   Drucksache unter dieser Körperschaft. Vgl. [Objektlisten](#objektlisten).
+    Typ: `oparl:Paper`.
+    Kardinalität: 0 bis *.
+    ZWINGEND.
 
-TODO: Beschreibung
+`member`
+:   Person in dieser Körperschaft. Vgl. [Objektlisten](#objektlisten).
+    Typ: `oparl:Person`.
+    Kardinalität: 0 bis *.
+    ZWINGEND.
 
-### Eigenschaft `rgs`
+`meeting`
+:   Sitzung dieser Körperschaft. Vgl. [Objektlisten](#objektlisten).
+    Typ: `oparl:Meeting`.
+    Kardinalität: 0 bis *.
+    ZWINGEND.
 
-Diese Eigenschaft ist EMPFOHLEN.
+`organization`
+:   Gruppierung in dieser Körperschaft. Vgl. [Objektlisten](#objektlisten).
+    Typ: `oparl:Organization`.
+    Kardinalität: 0 bis *.
+    ZWINGEND.
 
-Handelt es sich bei der Körperschaft um eine Gebietskörperschaft
-(Landkreis, Kommune etc.) in Deutschland, SOLL für die eindeutige
-Identifizierung der amtliche Regionalschlüssel verwendet werden.^[Regionalschlüssel können im [Gemeindeverzeichnis (GV-ISys) des Statistischen Bundesamtes](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html) eingesehen werden]
-Dieser ist grundsätzlich zwölfstellig.
+`legislativeTerm`
+:   Wahlperiode.
+    Typ: `oparl:LegislativeTerm`.
+    Kardinalität: 0 bis *.
+    EMPFOHLEN.
 
-### Eigenschaft `gnd_url`
+`keyword`
+:   Schlagwort(e). Vgl. [Vokabulare zur Klassifizierung](#vokabulare_klassifizierung).
+    Typ: `skos:Concept`.
+    Kardinalität: 0 bis *.
+    OPTIONAL.
 
-Diese Eigenschaft ist EMPFOHLEN.
+`allConcepts`
+:   Alle Schlagworte und Begriffe, die von dieser Körperschaft verwendet werden.
+    insbesondere dann
+    wichtig, wenn Sortierungs-Reihenfolgen verwendet werden.
+    Typ: `skos:Concept`.
+    Kardinalität: 0 bis *.
+    OPTIONAL.
 
-Sofern die Körperschaft in der GND^[Gemeinsame Normdatei <http://www.dnb.de/gnd>] vertreten ist, SOLL diese Eigenschaft
-als Wert die URL des Eintrags in der GND enthalten.
+`created`
+:   Datum/Uhrzeit der Erzeugung des Objekts.
+    Typ: `xsd:dateTime`.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-### Eigenschaft `contact`
+`modified`
+:   Datum/Uhrzeit der letzten Bearbeitung des Objekts.
+    Typ: `xsd:dateTime`.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
-Diese Eigenschaft ist EMPFOHLEN.
-
-Über diese Eigenschafte SOLLEN Kontaktinformationen zu einer Stelle bereit
-gestellt werden, die die inhaltliche Verantwortung für sämtliche zu dieser
-Körperschaft gehörenden Inhalte im System trägt. Besonders wichtig ist diese
-Angabe, wenn auf einem System mehrere Körperschaften vertreten sind und damit
-auf der Ebene des `oparl:System` Objekts ein rein technischer Kontakt ausgegeben
-wird, der nicht für inhaltliche Fragestellungen im Zuständigkeitsbereich der
-jeweiligen Körperschaften kontaktiert werden sollte.
-
-### Eigenschaft `papers`
-
-Diese Eigenschaft ist ZWINGEND.
-
-Wert dieser Eigenschaft ist die URL der API zum Aufruf einer Liste der
-Drucksachen (Objekte vom Typ `oparl:Paper`) für diese Körperschaft.
-
-### Eigenschaft `people`
-
-Diese Eigenschaft ist ZWINGEND.
-
-Wert dieser Eigenschaft ist die URL der API zum Aufruf einer Liste der
-Personen (Objekte vom Typ `oparl:Person`) für diese Körperschaft.
-
-### Eigenschaft `meetings`
-
-Diese Eigenschaft ist ZWINGEND.
-
-Wert dieser Eigenschaft ist die URL der API zum Aufruf einer Liste der
-Sitzungen (Objekte vom Typ `oparl:Meeting`) für diese Körperschaft.
-
-### Eigenschaft `committees`
-
-Diese Eigenschaft ist ZWINGEND.
-
-Wert dieser Eigenschaft ist die URL der API zum Aufruf einer Liste der
-Gremien (Objekte vom Typ `oparl:Committee`) für diese Körperschaft.
-
-
-### Beispiel
-
-~~~~~  {#oparlbody_ex1 .json}
-{
-    "@id": "http://refserv.oparl.org/bodies/0",
-    "@context": "http://oparl.org/schema/1.0/Body",
-    "committees": "http://refserv.oparl.org/bodies/0/committees/",
-    "contact": {
-        "email": "ris@stadt-koeln.de",
-        "name": "RIS-Betreuung"
-    }, 
-    "created": "2014-01-08T14:28:31.568+0100",
-    "gnd_url": "http://d-nb.info/gnd/2015732-0",
-    "last_modified": "2014-01-08T14:28:31.568+0100",
-    "meetings": "http://refserv.oparl.org/bodies/0/meetings/",
-    "name": "Stadt K\u00f6ln",
-    "name_long": "Stadt K\u00f6ln, kreisfreie Stadt",
-    "organisations": "http://refserv.oparl.org/bodies/0/organisations/",
-    "papers": "http://refserv.oparl.org/bodies/0/papers/",
-    "people": "http://refserv.oparl.org/bodies/0/people/",
-    "rgs": "053150000000",
-    "system": "http://refserv.oparl.org/",
-    "url": "http://www.stadt-koeln.de/"
-}
-~~~~~
-
+TODO: Beispiel zu `allConcepts` einfügen.

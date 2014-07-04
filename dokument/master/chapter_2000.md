@@ -1,4 +1,4 @@
-Architektur
+Architektur  {#architektur}
 ===========
 
 In diesem Abschnitt werden grundlegenden Konzepte, die von OParl abgedeckt
@@ -18,22 +18,14 @@ Architekturbeschreibung des W3-Konsortiums entlehnt.^[Architecture of the World 
 ![Architekturdiagramm](images/architektur-ueberblick.png)
 
 
-Parlamentarisches Informationssystem
+Parlamentarisches Informationssystem {#parlamentarisches_infosystem}
 ------------------------------------
 
 Parlamentarische Informationssysteme sind Software-Systeme, die von
 verschiedensten Körperschaften eingesetzt werden, um die Zusammenarbeit
 von Parlamenten zu organisieren, zu dokumentieren und öffentlich nachvollziehbar
-zu machen.
-
-Im kommunalen Umfeld in Deutschland, wo das Parlament je nach Art der Kommune
-häufig als Stadtrat oder Gemeinderat bezeichnet wird, hat sich für diese Art
-von Informationssystem auch der Begriff "Ratsinformationssystem" (kurz "RIS")
-etabliert.
-
-Parlamentarische Informationssysteme sind jedoch nicht auf die kommunale Ebene
-begrenzt. Ähnliche Systeme werden auch auf Ebene z.B. von Landkreisen,
-Regierungsbezirken und diversen Zweckverbänden eingesetzt.
+zu machen. Zu den Körperschaften können beispielsweise Kommunen, Landkreise,
+Regierungsbezirke und Zweckverbände gehören.
 
 Diese Systeme unterstützen in der Regel mehrere der folgenden Funktionen:
 
@@ -47,10 +39,10 @@ Regel einem geschlossenen Nutzerkreis vorbehalten. Die Darstellung und der Abruf
 von Informationen und Dokumenten hingegen ist in vielen Fällen für die
 Öffentlichkeit freigegeben.
 
-Die OParl Spezifikation beschreibt eine Schnittstelle, die den maschinellen,
+Die OParl-Spezifikation beschreibt eine Schnittstelle, die den maschinellen,
 lesenden Zugriff auf derartige Informationen ermöglicht.
 
-Server
+Server {#server}
 ------
 
 Der Server im Sinne dieser Spezifikation ist ein Software-Dienst, der auf einem
@@ -64,16 +56,16 @@ desjenigen, der das parlamentarischen Informationssystem betreibt.
 
 Von einem Server, der die OParl-Spezifikation erfüllt, wird erwartet, dass er
 bestimmte parlamentarische Informationen in einem bestimmten Format zur Verfügung
-stellt und auf bestimmte Anfragen von so genannten Clients über die OParl API
+stellt und auf bestimmte Anfragen von so genannten Clients über die OParl-API
 entsprechend dieser Spezifikation reagiert.
 
-API
+API {#api}
 ---
 
 Der Begriff API steht in diesem Dokument für die Webservice-Schnittstelle, die der
 Server anbietet. Die Schnittstelle basiert auf dem HTTP-Protokoll. Mittels HTTPS
-ist wahlweise auch die verschlüsselte Nutzung der API möglich, sofern Server dies
-unterstützt.
+ist die verschlüsselte Nutzung der API möglich, sofern Server dies
+unterstützen.
 
 Die API steht im Mittelpunkt dieser Spezifikation. Server und Clients sind
 als Kommunikationspartner zu verstehen, die über das Internet als Kommunikationskanal
@@ -81,35 +73,35 @@ mit einander kommunizieren können. Die API-Spezifikation stellt dabei die
 nötige Grammatik und das Vokabular bereit, anhand dessen eine sinnvolle Kommunikation
 erfolgen kann.
 
-Client
+Client {#client}
 ------
 
-Der Begriff "Client" steht für eine Software, die über die OParl API mit dem Server
+Der Begriff "Client" steht für eine Software, die über die OParl-API mit dem Server
 kommuniziert. Da die API auf dem HTTP-Protokoll aufbaut, handelt es sich bei dem
 Client um eine spezielle Form eines HTTP-Clients.
 
-Cache
+Cache {#cache}
 -----
 
 Ein Cache ist ein Speicher, der einem Client dazu dienen kann, von einem
 Server abgerufene Informationen längerfristig vorzuhalten. Dies kann beispielsweise
 dazu dienen, mehrfache Anfragen der selben Informationen zu vermeiden, wodurch
-sowohl Ressourcen auf Seite des Servers geschohnt als auch die Nutzung von
+sowohl Ressourcen auf Seite des Servers geschont als auch die Nutzung von
 Netzwerkbandbreite reduziert werden kann. Die Nutzung eines Cache kann auch
 zur Verbesserung der Nutzerfreundlichkeit eines Clients beitragen, indem
 Wartezeiten zur Bereitstellung einer Ressource verkürzt werden.
 
-Nutzerin oder Nutzer
+Nutzerin oder Nutzer {#nutzerin}
 --------------------
 
 Mit einer Nutzerin oder einem Nutzer ist in diesem Fall eine natürliche Person gemeint,
 die mittels eines OParl-Clients auf parlamentarische Informationen zugreift.
 
-Objekt
+Objekt  {#objekt}
 ------
 
 Der Server beantwortet Anfragen eines Clients im Regelfall, indem bestimmte Objekte
 ausgegeben werden. Objekte sind im Fall einer OParl-konformen API JSON-Objekte, die
-das Schema einhalten, das in der vorliegenden Spezifikation beaschrieben wird.
+das Schema einhalten, das in der vorliegenden Spezifikation beschrieben wird.
 Antworten des Servers können einzelne Objekte, Listen von Objekten oder Listen von
 URLs von Objekten enthalten.

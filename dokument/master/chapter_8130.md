@@ -1,41 +1,102 @@
-oparl:Location (Ort)
--------------------
+oparl:Location (Ort)  {#oparl_location}
+--------------------
 
-Dieser Objekttyp dient dazu, einen Ortsbezug einer Drucksache formal 
+Dieser Objekttyp dient dazu, den Ortsbezug einer Drucksache formal 
 abzubilden. Ortsangaben können sowohl aus Textinformationen bestehen 
-(beispielsweise der Name einer Straße/eines Platzes oder eine genaue 
-Adresse) als auch aus Geodaten.
+(beispielsweise dem Namen einer Straße/eines Platzes oder eine genaue 
+Adresse) als auch aus Geodaten. Ortsangaben sind auch nicht auf einzelne
+Positionen beschränkt, sondern können eine Vielzahl von Positionen,
+Flächen, Strecken etc. abdecken.
 
-OParl sieht die Angabe von Geodaten in Anlehnung an die 
-GeoJSON-Spezifikation [13] vor. Die GeoJSON-Spezifikation erlaubt die 
-Abbildung von vielen unterschiedlichen Geometrien wie Punkten, Pfaden und 
-Polygonen. Während GeoJSON zu jedem Geodaten-Objekt auch die Speicherung
-zusätzlicher Metadaten ermöglicht, beschränkt sich OParl ledliglich auf das
-`geometry`-Attribut in GeoJSON. Sämtliche Geo-Koordinatenangaben werden in
-in OParl im WGS-84-System [11] erwartet.
+In der Praxis soll dies dazu dienen, den geografischen Bezug eines
+politischen Vorgangs, wie zum Beispiel eines Bauvorhabens oder der 
+Änderung eines Flächennutzungsplanes, maschinenlesbar nachvollziehbar
+zu machen.
 
-![Objekttyp Location](images/datenmodell_ort.png)
+Dieser Objekttyp kann für Objekte im Kontext des Objekttyps
+`oparl:Paper` verwendet werden.
+
+### Beispiel ###
+
+Der JSON-LD-Kontext für die Eigenschaft `geometry`:
+
+~~~~~
+{
+   "geometry": {
+     // TODO wird @id benötigt?
+     "@type": "ogc:wktLiteral"
+   }
+}
+~~~~~
+
+Und ein Beispiel unter Verwendung des Kontextes:
+
+~~~~~  {#location_ex2 .json}
+{
+    ...
+    "location": {
+        "description": "Honschaftsstraße 312, Köln",
+        "geometry": "POINT (7.03291 50.98249)"
+    },
+    ...
+}
+~~~~~
+
+### Anmerkungen ###
+
+OParl sieht bei Angabe von Geodaten ZWINGEND die Verwendung des  
+Well-Known-Text-Formats (WKT) der Simple Feature Access Spezifikation^[Simple
+Feature Access Spezifikation: <http://www.opengeospatial.org/standards/sfa>]
+vor. WKT erlaubt die Beschreibung von unterschiedlichen Geometrien wie
+Punkten (`Point`), Pfaden (`LineString`), Polygonen (`Polygon`) und viele andere
+mehr.
+
+Zum Zeitpunkt der Erstellung der vorliegenden Spezifikation ist Version 1.2.1
+der Simple-Feature-Access-Spezifikation aktuell. OParl stellt keine Anforderungen
+daran, welche Version von Simple-Feature-Access bei der Ausgabe von WKT zu
+unterstützen ist.
+
+Für die Ausgabe über eine OParl-API MÜSSEN sämtliche Koordinatenangaben solcher
+Geodaten im System WGS84^[WGS84 steht für "World Geodetic System 1984",
+es wird unter anderem auch vom Global Positioning System (GPS) verwendet.
+In geografischen Informationssystemen ist für das System der EPSG-Code 4326 
+geläufig.] angegeben werden, und zwar in Form von Zahlenwerten (Fließkommazahlen)
+für Längen- und Breitengrad.
 
 ### Eigenschaften ###
 
-Textanabe (`description`)
-:   _Optional._ Textliche Beschreibung eines Orts, z.B. in Form einer Adresse
-Koordinaten (`geometry`)
-:   _Optional._ GeoJSON geometry Objekt
-Zuletzt geändert (`last_modified`)
-:   Datum und Uhrzeit der letzten Änderung
+`description`
+:   Textliche Beschreibung eines Orts, z. B. in Form einer Adresse.
+    Typ: String.
+    Kardinalität: 0 bis 1.
+    EMPFOHLEN.
 
+`geometry`
+:   Geodaten-Repräsentation des Orts. Ist diese Eigenschaft gesetzt,
+    MUSS ihr Wert der Spezifikation von Well-Known Text (WKT) entsprechen.
+    Typ: String.
+    Kardinalität: 0 bis 1.
+    OPTIONAL.
 
-### Beziehungen ###
-* Orte können mit Drucksachen in Verbindung stehen.
+`keyword`
+:   Schlagwort mit `skos:prefLabel`. Vgl. dazu [Vokabulare zur Klassifizierung](#vokabulare_klassifizierung).
+    Typ: `skos:Concept`.
+    Kardinalität: 0 bis *.
+    OPTIONAL.
 
-~~~~~  {#location_ex1 .json}
+### Weitere Beispiele
+
+Ortsangabe mit Polygon-Objekt:
+
+~~~~~  {#location_ex3 .json}
 {
-    "description": "Honschaftsstraße 312, 51061 Köln",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [7.03291, 50.98249]
-    },
-    "last_modified": "2013-02-14T14:05:27+01:00"
+    "description": "Rechtes Rheinufer zwischen Deutzer
+        Brücke und Hohenzollernbrücke",
+    "geometry": "POLYGON ((
+                6.9681106 50.9412137,
+                6.9690940 50.9412137,
+                6.9692169 50.9368270,
+                6.9681218 50.9368270,
+                6.9681106 50.9412137))"
 }
 ~~~~~
