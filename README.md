@@ -1,6 +1,6 @@
 # OpenGov (working title)
 
-This page is work in progress and likely will be translated to English. So far there exists a Wiki page: https://github.com/akuckartz/ld-specs/wiki
+This page is work in progress and likely will be translated to English. So far there exists a Wiki page: https://github.com/OpenGovLD/specs/wiki
 
 ***
 
@@ -21,17 +21,17 @@ Die Quelldateien sind reine Textdateien (Zeichensatz: UTF-8) mit Markdown-Format
 
 **Übrigens:** [prose.io](http://prose.io/) ist ein fantastischer Web-basierter Editor, mit dem Du die Markdown-Dateien in Deinem eigenen Repository spielend im Browser bearbeiten kannst.
 
-Änderungsinfos können übrigens in Form eines [Atom Feeds](https://github.com/akuckartz/ld-specs/commits/master.atom) abonniert werden.
+Änderungsinfos können übrigens in Form eines [Atom Feeds](https://github.com/OpenGovLD/specs/commits/master.atom) abonniert werden.
 
 Derivate: Bequemes Lesen auf verschiedenen Geräten
 --------------------------------------------------
 
 Es stehen Versionen des Dokuments in vielen Formaten zur Verfügung:
 
-* [PDF](https://github.com/akuckartz/ld-specs/blob/master/dokument/pdf/document.pdf?raw=true)
-* [OpenOffice/LibreOffice](https://github.com/akuckartz/ld-specs/blob/master/dokument/odt/document.odt?raw=true)
-* [Microsoft Word](https://github.com/akuckartz/ld-specs/blob/master/dokument/docx/document.docx?raw=true)
-* [LaTeX](https://github.com/akuckartz/ld-specs/blob/master/dokument/epub/document.epub?raw=true)
-* [Nur Text](https://github.com/akuckartz/ld-specs/blob/master/dokument/plain/document.txt?raw=true)
+* [PDF](https://github.com/OpenGovLD/specs/blob/master/dokument/pdf/document.pdf?raw=true)
+* [OpenOffice/LibreOffice](https://github.com/OpenGovLD/specs/blob/master/dokument/odt/document.odt?raw=true)
+* [Microsoft Word](https://github.com/OpenGovLD/specs/blob/master/dokument/docx/document.docx?raw=true)
+* [LaTeX](https://github.com/OpenGovLD/specs/blob/master/dokument/epub/document.epub?raw=true)
+* [Nur Text](https://github.com/OpenGovLD/specs/blob/master/dokument/plain/document.txt?raw=true)
 
 Die Derivate werden mit [Pandoc](http://johnmacfarlane.net/pandoc/) erzeugt. Das Script unter 'scripts/create_documents.sh' automatisiert diesen Vorgang.
