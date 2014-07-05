@@ -1,11 +1,11 @@
-# The Fork (working title)
+# OpenGov (working title)
 
 This page is work in progress and likely will be translated to English. So far there exists a Wiki page: https://github.com/akuckartz/ld-specs/wiki
 
 ***
 
-In diesem Repository wird die Spezifikation erarbeitet. The Fork ist eine Initiative für die Offenheit parlamentarischer Informationssysteme. Sie spezifiziert eine einheitliche Schnittstelle zum Abruf von
-öffenltichen Informationen aus parlamentarischen Informationssystemen.
+In diesem Repository wird die Spezifikation erarbeitet. OpenGov spezifiziert eine einheitliche Schnittstelle zum Abruf von
+öffentlichen Informationen aus parlamentarischen Informationssystemen.
 
 
 Original: Editieren, Änderungen nachvollziehen
