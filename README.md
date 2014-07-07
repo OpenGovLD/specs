@@ -1,4 +1,4 @@
-# OpenGov (working title)
+# OpenGovLD (working title)
 
 This page is work in progress and likely will be translated to English. So far there exists a Wiki page: https://github.com/OpenGovLD/specs/wiki
 
