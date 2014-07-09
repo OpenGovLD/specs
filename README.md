@@ -28,6 +28,8 @@ Derivate: Bequemes Lesen auf verschiedenen Geräten
 
 Es stehen Versionen des Dokuments in vielen Formaten zur Verfügung:
 
+*ACHTUNG*: Gegenwärtig sind dies noch unmodifizierte Kopien der OParl-Dokumente. (Eine einfache Textersetzung von "OParl" durch "OpenGovLD" ist erst sinnvoll, wenn ein Teil der Texte manuell überarbeitet ist. Das betrifft z.B. die Historie.)
+
 * [PDF](https://github.com/OpenGovLD/specs/blob/master/dokument/pdf/document.pdf?raw=true)
 * [OpenOffice/LibreOffice](https://github.com/OpenGovLD/specs/blob/master/dokument/odt/document.odt?raw=true)
 * [Microsoft Word](https://github.com/OpenGovLD/specs/blob/master/dokument/docx/document.docx?raw=true)
