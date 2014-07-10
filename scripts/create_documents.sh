@@ -6,9 +6,9 @@
 SOURCE="*.md"
 DOC_FOLDER=".."
 PWD=`pwd`
-PDFLATEX="/usr/local/texlive/2013/bin/x86_64-darwin/pdflatex"
+PDFLATEX="pdflatex"
 
-GS="/usr/local/bin/gs"
+GS="gs"
 
 cd dokument/master
 
