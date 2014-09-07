@@ -1,6 +1,6 @@
-# OpenGovLD (working title)
+# OpenGovLD
 
-This page is work in progress and likely will be translated to English. So far there exists a Wiki page: https://github.com/OpenGovLD/specs/wiki
+This page is work in progress and will be translated to English. So far there exists a Wiki page: https://github.com/OpenGovLD/specs/wiki
 
 ***
 
