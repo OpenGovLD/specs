@@ -2,6 +2,8 @@
 
 This page is work in progress and will be translated to English. So far there exists a Wiki page: https://github.com/OpenGovLD/specs/wiki
 
+The main part of the specification will be *machine readable*. Therefore only a small amount of text of the specification will _only_ be readable by humans.
+
 ***
 
 In diesem Repository wird die Spezifikation erarbeitet. OpenGov spezifiziert eine einheitliche Schnittstelle zum Abruf von
