@@ -1,0 +1,28 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix foaf: <http://xmlns.com/foaf/0.1/> . 
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix dir: <http://dir.w3.org/directory/schema#> . 
+@prefix directory: <http://dir.w3.org/directory/orgtypes/> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix gr: <http://purl.org/goodrelations/v1#> . 
+@prefix org: <http://www.w3.org/ns/org#> . 
+
+<> foaf:primaryTopic <#org> . 
+<#org> a org:Organization, dir:Organization, gr:BusinessEntity, vcard:Organization 
+  ; rdfs:label "W3C Open Government Community Group" 
+  ; gr:legalName "W3C Open Government Community Group" 
+  ; vcard:organization-name "W3C Open Government Community Group" 
+  ; skos:prefLabel "W3C Open Government Community Group" 
+  ; dir:isOrganizationType directory:research-academic 
+  ; vcard:url <http://www.w3.org/community/opengov/> 
+  ; rdfs:comment """This group's mission is to discuss and prepare data and API specifications relating to open government information""" 
+. 
+
+<#org> org:hasMember <#contacts-AndreasKuckartz> . 
+<#contacts-AndreasKuckartz> a foaf:Agent, dir:Person 
+  ; foaf:name "Andreas Kuckartz" 
+  ; vcard:fn "Andreas Kuckartz" 
+  ; org:memberOf <#org> 
+  ; vcard:workEmail "a.kuckartz@ping.de" 
+. 
