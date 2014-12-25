@@ -4,6 +4,8 @@ This page is work in progress and will be translated to English. So far there ex
 
 The main part of the specification will be *machine readable*. Therefore only a small amount of text of the specification will _only_ be readable by humans.
 
+The specification will enable <img src="http://lab.linkeddata.deri.ie/2010/lod-badges/img/data-badge-5.png" alt="five star open Web data" />-conformance.
+
 ***
 
 In diesem Repository wird die Spezifikation erarbeitet. OpenGov spezifiziert eine einheitliche Schnittstelle zum Abruf von
