@@ -32,7 +32,9 @@ Derivate: Bequemes Lesen auf verschiedenen Geräten
 
 Es stehen Versionen des Dokuments in vielen Formaten zur Verfügung:
 
-*ACHTUNG*: Gegenwärtig sind dies noch unmodifizierte Kopien der OParl-Dokumente. (Eine einfache Textersetzung von "OParl" durch "OpenGovLD" ist erst sinnvoll, wenn ein Teil der Texte manuell überarbeitet ist. Das betrifft z.B. die Historie.)
+*ACHTUNG*: Gegenwärtig sind dies noch unmodifizierte Kopien der OParl-Dokumente des Stands unmittelbar vor dem "JSON-LD Rückbau".
+
+Eine einfache Textersetzung von "OParl" durch "OpenGovLD" ist erst sinnvoll, wenn ein Teil der Texte manuell überarbeitet ist. Das betrifft z.B. die Historie. Nach aktuellem Stand wird es für OpenGovLD möglicherweise nur noch eine HTML-Serialisierung geben, die auf der von zahlreichen Arbeitsgruppen des W3C verwendeten ReSpec basiert - und deren nicht maschinenlesbarer Teil sehr viel kürzer ist als der bisherige Entwurf der OParl-Spezifikation.
 
 * [PDF](https://github.com/OpenGovLD/specs/blob/master/dokument/pdf/document.pdf?raw=true)
 * [OpenOffice/LibreOffice](https://github.com/OpenGovLD/specs/blob/master/dokument/odt/document.odt?raw=true)
