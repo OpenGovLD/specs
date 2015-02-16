@@ -1,0 +1,687 @@
+{
+    "@context": {
+        "vocab": "http://www.markus-lanthaler.com/hydra/api-demo/vocab#",
+        "hydra": "http://www.w3.org/ns/hydra/core#",
+        "ApiDocumentation": "hydra:ApiDocumentation",
+        "property": {
+            "@id": "hydra:property",
+            "@type": "@id"
+        },
+        "readonly": "hydra:readonly",
+        "writeonly": "hydra:writeonly",
+        "supportedClass": "hydra:supportedClass",
+        "supportedProperty": "hydra:supportedProperty",
+        "supportedOperation": "hydra:supportedOperation",
+        "method": "hydra:method",
+        "expects": {
+            "@id": "hydra:expects",
+            "@type": "@id"
+        },
+        "returns": {
+            "@id": "hydra:returns",
+            "@type": "@id"
+        },
+        "statusCodes": "hydra:statusCodes",
+        "code": "hydra:statusCode",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "label": "rdfs:label",
+        "description": "rdfs:comment",
+        "domain": {
+            "@id": "rdfs:domain",
+            "@type": "@id"
+        },
+        "range": {
+            "@id": "rdfs:range",
+            "@type": "@id"
+        },
+        "subClassOf": {
+            "@id": "rdfs:subClassOf",
+            "@type": "@id"
+        }
+    },
+    "@id": "http://www.markus-lanthaler.com/hydra/api-demo/vocab",
+    "@type": "ApiDocumentation",
+    "supportedClass": [
+        {
+            "@id": "http://www.w3.org/ns/hydra/core#Resource",
+            "@type": "hydra:Class",
+            "hydra:title": "Resource",
+            "hydra:description": null,
+            "supportedOperation": [],
+            "supportedProperty": []
+        },
+        {
+            "@id": "http://www.w3.org/ns/hydra/core#Collection",
+            "@type": "hydra:Class",
+            "hydra:title": "Collection",
+            "hydra:description": null,
+            "supportedOperation": [],
+            "supportedProperty": [
+                {
+                    "property": "http://www.w3.org/ns/hydra/core#member",
+                    "hydra:title": "members",
+                    "hydra:description": "The members of this collection.",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                }
+            ]
+        },
+        {
+            "@id": "vocab:User",
+            "@type": "hydra:Class",
+            "subClassOf": null,
+            "label": "User",
+            "description": "A User represents a person registered in the system.",
+            "supportedOperation": [
+                {
+                    "@id": "_:user_replace",
+                    "@type": "hydra:Operation",
+                    "method": "PUT",
+                    "label": "Replaces an existing User entity",
+                    "description": null,
+                    "expects": "vocab:User",
+                    "returns": "vocab:User",
+                    "statusCodes": [
+                        {
+                            "code": 404,
+                            "description": "If the User entity wasn't found."
+                        }
+                    ]
+                },
+                {
+                    "@id": "_:user_delete",
+                    "@type": "hydra:Operation",
+                    "method": "DELETE",
+                    "label": "Deletes a User entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "http://www.w3.org/2002/07/owl#Nothing",
+                    "statusCodes": []
+                },
+                {
+                    "@id": "_:user_retrieve",
+                    "@type": "hydra:Operation",
+                    "method": "GET",
+                    "label": "Retrieves a User entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "vocab:User",
+                    "statusCodes": []
+                }
+            ],
+            "supportedProperty": [
+                {
+                    "property": {
+                        "@id": "vocab:User/name",
+                        "@type": "rdf:Property",
+                        "label": "name",
+                        "description": "The user's full name",
+                        "domain": "vocab:User",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "name",
+                    "hydra:description": "The user's full name",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:User/email",
+                        "@type": "rdf:Property",
+                        "label": "email",
+                        "description": "The user's email address",
+                        "domain": "vocab:User",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "email",
+                    "hydra:description": "The user's email address",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:User/password",
+                        "@type": "rdf:Property",
+                        "label": "password",
+                        "description": "The user's password",
+                        "domain": "vocab:User",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "password",
+                    "hydra:description": "The user's password",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": true
+                },
+                {
+                    "property": {
+                        "@id": "vocab:User/raisedIssues",
+                        "@type": "hydra:Link",
+                        "label": "raised_issues",
+                        "description": "The issues raised by this user",
+                        "domain": "vocab:User",
+                        "range": "http://www.w3.org/ns/hydra/core#Collection",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_raised_issues_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves the issues raised by a User entity",
+                                "description": null,
+                                "expects": null,
+                                "returns": "http://www.w3.org/ns/hydra/core#Collection",
+                                "statusCodes": [
+                                    {
+                                        "code": 404,
+                                        "description": "If the User entity wasn't found."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "hydra:title": "raised_issues",
+                    "hydra:description": "The issues raised by this user",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                }
+            ]
+        },
+        {
+            "@id": "vocab:Issue",
+            "@type": "hydra:Class",
+            "subClassOf": null,
+            "label": "Issue",
+            "description": "An Issue tracked by the system.",
+            "supportedOperation": [
+                {
+                    "@id": "_:issue_replace",
+                    "@type": "hydra:Operation",
+                    "method": "PUT",
+                    "label": "Replaces an existing Issue entity",
+                    "description": null,
+                    "expects": "vocab:Issue",
+                    "returns": "vocab:Issue",
+                    "statusCodes": [
+                        {
+                            "code": 404,
+                            "description": "If the Issue entity wasn't found."
+                        }
+                    ]
+                },
+                {
+                    "@id": "_:issue_delete",
+                    "@type": "hydra:Operation",
+                    "method": "DELETE",
+                    "label": "Deletes a Issue entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "http://www.w3.org/2002/07/owl#Nothing",
+                    "statusCodes": []
+                },
+                {
+                    "@id": "_:issue_retrieve",
+                    "@type": "hydra:Operation",
+                    "method": "GET",
+                    "label": "Retrieves a Issue entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "vocab:Issue",
+                    "statusCodes": []
+                }
+            ],
+            "supportedProperty": [
+                {
+                    "property": {
+                        "@id": "vocab:Issue/title",
+                        "@type": "rdf:Property",
+                        "label": "title",
+                        "description": "The issue's title",
+                        "domain": "vocab:Issue",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "title",
+                    "hydra:description": "The issue's title",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Issue/description",
+                        "@type": "rdf:Property",
+                        "label": "description",
+                        "description": "A description of the issue",
+                        "domain": "vocab:Issue",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "description",
+                    "hydra:description": "A description of the issue",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:isOpen",
+                        "@type": "rdf:Property",
+                        "label": "is_open",
+                        "description": "Is the issue open?\nUse for 1 yes, 0 for no when modifying this value.",
+                        "domain": "vocab:Issue",
+                        "range": "http://www.w3.org/2001/XMLSchema#boolean",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "is_open",
+                    "hydra:description": "Is the issue open?\nUse for 1 yes, 0 for no when modifying this value.",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Issue/raisedBy",
+                        "@type": "hydra:Link",
+                        "label": "raised_by",
+                        "description": "The user who raised the issue",
+                        "domain": "vocab:Issue",
+                        "range": "vocab:User",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves a User entity",
+                                "description": null,
+                                "expects": null,
+                                "returns": "vocab:User",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "raised_by",
+                    "hydra:description": "The user who raised the issue",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Issue/createdAt",
+                        "@type": "rdf:Property",
+                        "label": "created_at",
+                        "description": "The date and time this issue was created",
+                        "domain": "vocab:Issue",
+                        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "created_at",
+                    "hydra:description": "The date and time this issue was created",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Issue/comments",
+                        "@type": "hydra:Link",
+                        "label": "comments",
+                        "description": "The comments associated with this issue",
+                        "domain": "vocab:Issue",
+                        "range": "http://www.w3.org/ns/hydra/core#Collection",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:issue_comment_create",
+                                "@type": "hydra:Operation",
+                                "method": "POST",
+                                "label": "Creates a new Comment for a specific issue",
+                                "description": "To create a new Comment you have to be authenticated.",
+                                "expects": "vocab:Comment",
+                                "returns": "vocab:Comment",
+                                "statusCodes": [
+                                    {
+                                        "code": 404,
+                                        "description": "If the Issue wasn't found."
+                                    }
+                                ]
+                            },
+                            {
+                                "@id": "_:issue_comment_collection_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves all Comment entities for a specific issue",
+                                "description": null,
+                                "expects": null,
+                                "returns": "http://www.w3.org/ns/hydra/core#Collection",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "comments",
+                    "hydra:description": "The comments associated with this issue",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                }
+            ]
+        },
+        {
+            "@id": "vocab:Comment",
+            "@type": "hydra:Class",
+            "subClassOf": null,
+            "label": "Comment",
+            "description": "Comment",
+            "supportedOperation": [
+                {
+                    "@id": "_:comment_replace",
+                    "@type": "hydra:Operation",
+                    "method": "PUT",
+                    "label": "Replaces an existing Comment entity",
+                    "description": null,
+                    "expects": "vocab:Comment",
+                    "returns": "vocab:Comment",
+                    "statusCodes": [
+                        {
+                            "code": 404,
+                            "description": "If the Comment entity wasn't found."
+                        }
+                    ]
+                },
+                {
+                    "@id": "_:comment_delete",
+                    "@type": "hydra:Operation",
+                    "method": "DELETE",
+                    "label": "Deletes a Comment entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "http://www.w3.org/2002/07/owl#Nothing",
+                    "statusCodes": []
+                },
+                {
+                    "@id": "_:comment_retrieve",
+                    "@type": "hydra:Operation",
+                    "method": "GET",
+                    "label": "Retrieves a Comment entity",
+                    "description": null,
+                    "expects": null,
+                    "returns": "vocab:Comment",
+                    "statusCodes": []
+                }
+            ],
+            "supportedProperty": [
+                {
+                    "property": {
+                        "@id": "vocab:Comment/text",
+                        "@type": "rdf:Property",
+                        "label": "text",
+                        "description": "The comment",
+                        "domain": "vocab:Comment",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "text",
+                    "hydra:description": "The comment",
+                    "required": null,
+                    "readonly": false,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Comment/issue",
+                        "@type": "hydra:Link",
+                        "label": "issue",
+                        "description": "The issue this comment belongs to",
+                        "domain": "vocab:Comment",
+                        "range": "vocab:Issue",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:issue_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves a Issue entity",
+                                "description": null,
+                                "expects": null,
+                                "returns": "vocab:Issue",
+                                "statusCodes": []
+                            },
+                            {
+                                "@id": "_:issue_replace",
+                                "@type": "hydra:Operation",
+                                "method": "PUT",
+                                "label": "Replaces an existing Issue entity",
+                                "description": null,
+                                "expects": "vocab:Issue",
+                                "returns": "vocab:Issue",
+                                "statusCodes": [
+                                    {
+                                        "code": 404,
+                                        "description": "If the Issue entity wasn't found."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "hydra:title": "issue",
+                    "hydra:description": "The issue this comment belongs to",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Comment/user",
+                        "@type": "hydra:Link",
+                        "label": "user",
+                        "description": "The user who wrote this comment",
+                        "domain": "vocab:Comment",
+                        "range": "vocab:User",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves a User entity",
+                                "description": null,
+                                "expects": null,
+                                "returns": "vocab:User",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "user",
+                    "hydra:description": "The user who wrote this comment",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:Comment/createdAt",
+                        "@type": "rdf:Property",
+                        "label": "created_at",
+                        "description": "The date and time this comment was created",
+                        "domain": "vocab:Comment",
+                        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+                        "supportedOperation": []
+                    },
+                    "hydra:title": "created_at",
+                    "hydra:description": "The date and time this comment was created",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                }
+            ]
+        },
+        {
+            "@id": "vocab:EntryPoint",
+            "@type": "hydra:Class",
+            "subClassOf": null,
+            "label": "EntryPoint",
+            "description": "The main entry point or homepage of the API.",
+            "supportedOperation": [
+                {
+                    "@id": "_:entry_point",
+                    "@type": "hydra:Operation",
+                    "method": "GET",
+                    "label": "The APIs main entry point.",
+                    "description": null,
+                    "expects": null,
+                    "returns": "vocab:EntryPoint",
+                    "statusCodes": []
+                }
+            ],
+            "supportedProperty": [
+                {
+                    "property": {
+                        "@id": "vocab:EntryPoint/issues",
+                        "@type": "hydra:Link",
+                        "label": "issues",
+                        "description": "The collection of all issues",
+                        "domain": "vocab:EntryPoint",
+                        "range": "http://www.w3.org/ns/hydra/core#Collection",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:issue_create",
+                                "@type": "hydra:Operation",
+                                "method": "POST",
+                                "label": "Creates a new Issue entity",
+                                "description": null,
+                                "expects": "vocab:Issue",
+                                "returns": "vocab:Issue",
+                                "statusCodes": [
+                                    {
+                                        "code": 201,
+                                        "description": "If the Issue entity was created successfully."
+                                    }
+                                ]
+                            },
+                            {
+                                "@id": "_:issue_collection_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves all Issue entities",
+                                "description": null,
+                                "expects": null,
+                                "returns": "http://www.w3.org/ns/hydra/core#Collection",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "issues",
+                    "hydra:description": "The collection of all issues",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:EntryPoint/registerUser",
+                        "@type": "hydra:Link",
+                        "label": "register_user",
+                        "description": "IRI to register a new user",
+                        "domain": "vocab:EntryPoint",
+                        "range": "http://www.w3.org/ns/hydra/core#Resource",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_create",
+                                "@type": "hydra:Operation",
+                                "method": "POST",
+                                "label": "Creates a new User entity",
+                                "description": null,
+                                "expects": "vocab:User",
+                                "returns": "vocab:User",
+                                "statusCodes": [
+                                    {
+                                        "code": 201,
+                                        "description": "If the User entity was created successfully."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "hydra:title": "register_user",
+                    "hydra:description": "IRI to register a new user",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:EntryPoint/myAccount",
+                        "@type": "hydra:Link",
+                        "label": "my_account",
+                        "description": "If logged in, a link to the user account",
+                        "domain": "vocab:EntryPoint",
+                        "range": "vocab:User",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves a User entity",
+                                "description": null,
+                                "expects": null,
+                                "returns": "vocab:User",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "my_account",
+                    "hydra:description": "If logged in, a link to the user account",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                },
+                {
+                    "property": {
+                        "@id": "vocab:EntryPoint/users",
+                        "@type": "hydra:Link",
+                        "label": "users",
+                        "description": "The collection of all users (for debugging purposes)",
+                        "domain": "vocab:EntryPoint",
+                        "range": "http://www.w3.org/ns/hydra/core#Collection",
+                        "supportedOperation": [
+                            {
+                                "@id": "_:user_create",
+                                "@type": "hydra:Operation",
+                                "method": "POST",
+                                "label": "Creates a new User entity",
+                                "description": null,
+                                "expects": "vocab:User",
+                                "returns": "vocab:User",
+                                "statusCodes": [
+                                    {
+                                        "code": 201,
+                                        "description": "If the User entity was created successfully."
+                                    }
+                                ]
+                            },
+                            {
+                                "@id": "_:user_collection_retrieve",
+                                "@type": "hydra:Operation",
+                                "method": "GET",
+                                "label": "Retrieves all User entities",
+                                "description": null,
+                                "expects": null,
+                                "returns": "http://www.w3.org/ns/hydra/core#Collection",
+                                "statusCodes": []
+                            }
+                        ]
+                    },
+                    "hydra:title": "users",
+                    "hydra:description": "The collection of all users (for debugging purposes)",
+                    "required": null,
+                    "readonly": true,
+                    "writeonly": false
+                }
+            ]
+        }
+    ]
